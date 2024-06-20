@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Display Volume Value by Clicking</title>
+</head>    
+<body>
+    <h3>Display Volume Value</h3>
+    <label for="vol">Volume:</label>
+    <input type="range" id="vol" name="vol" min="0"
+    max="100" onclick="myFunction()">
+
+    <p id="myValue"></p>
+
+    <script>
+        function myFunction(){
+            document.getElementById("myValue").innerHTML = 
+            "your volume: " + 
+            document.getElementById("vol").value; 
+        }
+    </script>
+</body>
+</html>
