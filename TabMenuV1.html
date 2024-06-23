@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Menu CSS and JavaScript</title>
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Arial, Helvetica, sans-serif;}
+        
+
+        .tab {
+          float: left;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+          width: 30%;
+          height: 300px;
+        }
+        
+
+        .tab button {
+          display: block;
+          background-color: inherit;
+          color: black;
+          padding: 22px 16px;
+          width: 100%;
+          border: none;
+          outline: none;
+          text-align: left;
+          cursor: pointer;
+          font-size: 17px;
+        }
+        
+
+        .tab button:hover {
+          background-color: #ddd;
+        }
+        
+
+        .tab button.active {
+          background-color: #ccc;
+        }
+        
+
+        .tabcontent {
+          float: left;
+          padding: 0px 12px;
+          border: 1px solid #ccc;
+          width: 70%;
+          border-left: none;
+          height: 300px;
+          display: none;
+        }
+        
+
+        .clearfix::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        </style>
+</head>
+<body>
+    
+<h2>Tap Content</h2>
+<p>Select tab menu.</p>
+
+<div class="tab">
+  <button class="tabmenu" onmouseover="openCity(event, 'HTML')">HTML</button>
+  <button class="tabmenu" onmouseover="openCity(event, 'JavaScript')">JavaScript</button>
+  <button class="tabmenu" onmouseover="openCity(event, 'CSS')">CSS</button>
+</div>
+
+<div id="HTML" class="tabcontent">
+  <h3>HTML</h3>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, ad! Qui, dolorum voluptatibus distinctio ipsam nesciunt quisquam enim magnam eligendi unde repellendus odio animi sequi dolorem delectus necessitatibus iusto eos?</p>
+</div>
+
+<div id="JavaScript" class="tabcontent">
+  <h3>JavaScript</h3>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto, rerum repellendus quaerat laudantium eos quas quam ex maiores temporibus, nobis quod fuga placeat? Ad consequatur iusto dolores optio cum minus.</p> 
+</div>
+
+<div id="CSS" class="tabcontent">
+  <h3>CSS</h3>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum cumque natus quia eos excepturi, corporis nemo commodi odio illo recusandae nostrum esse veritatis ad quo optio quam molestiae magni iure.</p>
+</div>
+
+<div class="clearfix"></div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tabmenu;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tabmenu = document.getElementsByClassName("tabmenu");
+  for (i = 0; i < tabmenu.length; i++) {
+    tabmenu[i].className = tabmenu[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+</body>
+</html>
