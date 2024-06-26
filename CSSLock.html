@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS LOCK</title>
+  <style>
+
+.lock{
+  font-size: 10;
+  position: relative;
+  width: 6em;
+  height: 4em;
+  border-radius: 1em;
+  top: 5em;
+  box-sizing: border-box;
+  border: 1em solid black;
+  border-right-width: 2.5em;
+  border-left-width: 2.5em;
+  margin: 0 0 6rem 0;
+}
+
+.lock::before{
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: 1em solid black;
+  width: 4.5em;
+  height: 3.5em;
+  left: 120%;
+  margin-left: -3em;
+  top: -3.5em;
+  border-top-left-radius: 3em;
+  border-top-right-radius: 3em;
+}
+
+.lock::after{
+  content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: .6em solid black;
+    width: 2em;
+    height: 3em;
+    border-radius: 2.5em;
+    left: 200%;
+    top: -.5em;
+    margin-left: -2.5em;
+}
+
+h2{
+    margin-left: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="lock"></div>
+  <h2>LOCK</h2>
+
+</body>
+</html>
