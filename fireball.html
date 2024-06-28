@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fireball</title>
+    <style>
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    margin: 0;
+    overflow: hidden;
+}
+
+.fireball {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ff6a00, #ff8c00, #ff4500, #ff0000);
+    border-radius: 50%;
+    position: relative;
+    animation: moveFireball 2s infinite linear, flicker 0.1s infinite alternate;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.8), 0 0 40px rgba(255, 69, 0, 0.6), 0 0 60px rgba(255, 69, 0, 0.4);
+}
+
+@keyframes moveFireball {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(200px);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 69, 0, 0.8), 0 0 30px rgba(255, 69, 0, 0.6), 0 0 45px rgba(255, 69, 0, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(255, 69, 0, 1), 0 0 50px rgba(255, 69, 0, 0.8), 0 0 75px rgba(255, 69, 0, 0.6);
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="fireball"></div>
+</body>
+</html>
