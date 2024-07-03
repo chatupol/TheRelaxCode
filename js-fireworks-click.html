@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Firework Click</title>
+</head>
+<body>
+<canvas id="fireworksCanvas"></canvas>
+<script>
+
+const canvas = document.getElementById('fireworksCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function randomColor() {
+const letters = '0123456789ABCDEF';
+let color = '#';
+for (let i = 0; i < 6; i++) {
+color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+
+class Particle {
+constructor(x, y) {
+this.x = x;
+this.y = y;
+this.color = randomColor();
+this.size = Math.random() * 5 + 1;
+this.speedX = Math.random() * 6 - 3;
+this.speedY = Math.random() * 6 - 3;
+this.gravity = 0.1;
+}
+
+update() {
+this.speedY += this.gravity;
+this.x += this.speedX;
+this.y += this.speedY;
+if (this.size > 0.2) this.size -= 0.1;
+}
+
+draw() {
+ctx.beginPath();
+ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+ctx.fillStyle = this.color;
+ctx.fill();
+}
+}
+
+let particles = [];
+
+function createFirework() {
+const particleCount = 100;
+const angleIncrement = (Math.PI * 2) / particleCount;
+const power = Math.random() * 5 + 5;
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+
+for (let i = 0; i < particleCount; i++) {
+const x = centerX;
+const y = centerY;
+const speedX = Math.cos(angleIncrement * i) * power;
+const speedY = Math.sin(angleIncrement * i) * power;
+
+particles.push(new Particle(x, y, speedX, speedY));
+}
+}
+
+function animate() {
+ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+particles.forEach((particle, index) => {
+particle.update();
+particle.draw();
+
+if (particle.size <= 0.2) {
+particles.splice(index, 1);
+}
+});
+
+requestAnimationFrame(animate);
+}
+
+canvas.addEventListener('click', createFirework);
+
+animate();
+</script>
+</body>
+</html>
