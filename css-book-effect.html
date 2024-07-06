@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Effect</title>
+<style>
+.book {
+position: relative;
+width: 200px;
+height: 300px;
+margin: 50px auto;
+perspective: 1000px;
+}
+.page {
+width: 100%;
+height: 100%;
+position: absolute;
+left: 0;
+top: 0;
+background-color: white;
+border: 1px solid #ccc;
+box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+transform-origin: left;
+transition: transform 0.5s, box-shadow 0.5s;
+}
+.book:hover .page {
+transform: rotateY(-145deg);
+box-shadow: -4px 4px 5px rgba(0,0,0,0.2);
+}
+.content{
+    margin: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="book">
+<div class="page">
+    <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ipsum dolores odit eligendi quas deserunt nobis earum in, recusandae excepturi? Nemo dolor rerum eveniet nihil sunt libero delectus, at ad!
+    </div>
+</div>
+</div>
+
+</body>
+</html>
