@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.container{
+  display: grid;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);  
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  padding: 10px;
+}
+.grid-item {
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.seconds{
+    color: red;
+}
+
+p{
+  font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+    <h2>Count down</h2>
+<div class="container">
+    
+   <div class="grid">
+    <div class="grid-item"><p id="day"></p></div>
+    <div class="grid-item"><p>:</p></div>
+    <div class="grid-item"><p id="hour"></p></div>
+    <div class="grid-item"><p>:</p></div>
+    <div class="grid-item"><p id="min"></p></div>
+    <div class="grid-item"><p>:</p></div>
+    <div class="grid-item seconds"><p id="sec"></p></div>
+    <div class="grid-item">DAYS</div>
+    <div class="grid-item"></div>
+    <div class="grid-item">HOURS</div>
+    <div class="grid-item"></div>
+    <div class="grid-item">MINUTES</div>
+    <div class="grid-item"></div>
+    <div class="grid-item ">SECONDS</div>
+   </div>
+</div>
+
+
+<script>
+var countDownDate = new Date("Jan 1, 2025 00:00:00").getTime();
+
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("day").innerHTML = days;
+  document.getElementById("hour").innerHTML = hours;
+  document.getElementById("min").innerHTML = minutes;
+  document.getElementById("sec").innerHTML = seconds;
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("day").innerHTML = 0;
+  document.getElementById("hour").innerHTML = 0;
+  document.getElementById("min").innerHTML = 0;
+  document.getElementById("sec").innerHTML = 0;
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
