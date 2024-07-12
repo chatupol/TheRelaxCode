@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #0b5ed7;
+}
+
+.bl-right{
+    position: absolute;
+  right: 0;
+  margin-right: 10px;
+  color: #0b5ed7;
+}
+
+button {
+  cursor: pointer;
+                    outline: 0;
+                    color: #fff;
+                    background-color: #0d6efd;
+                    border-color: #0d6efd;
+                    display: inline-block;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    text-align: center;
+                    border: 1px solid transparent;
+                    padding: 6px 12px;
+                    font-size: 16px;
+                    border-radius: .25rem;
+                    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    
+}
+
+button:hover {
+                        color: #fff;
+                        background-color: #0b5ed7;
+                        border-color: #0a58ca;
+                    }
+</style>
+<body>
+
+<h1>Download Bar</h1>
+
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+<br>
+<div class="bl-right" id="prlabel"></div>
+<button onclick="move()">Click Me</button> 
+
+<script>
+var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    var result;
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+          if(width * 1 === 100){
+            document.getElementById("prlabel").innerHTML = 'download completed';
+          }else{
+            document.getElementById("prlabel").innerHTML = width * 1 + '%';
+          }
+        
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
