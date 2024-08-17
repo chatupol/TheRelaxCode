@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Ripple Effect</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        canvas {
+            display: block;
+            background: radial-gradient(circle, #1e90ff, #000080);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let ripples = [];
+
+        function drawRipple(x, y) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.lineWidth = 2;
+
+            for (let i = 0; i < ripples.length; i++) {
+                let ripple = ripples[i];
+                ctx.beginPath();
+                ctx.arc(ripple.x, ripple.y, ripple.radius, 0, 2 * Math.PI);
+                ctx.stroke();
+                ripple.radius += 0.5;
+                ripple.alpha -= 0.005;
+
+                if (ripple.alpha <= 0) {
+                    ripples.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawRipple();
+            requestAnimationFrame(animate);
+        }
+
+        canvas.addEventListener('click', (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+            ripples.push({ x: x, y: y, radius: 0, alpha: 1 });
+        });
+
+        animate();
+    </script>
+</body>
+</html>
